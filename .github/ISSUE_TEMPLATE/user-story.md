@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-As a \<persona\>, I want \<feature\> because \<reason\>.
+As a <persona>, I want <feature> because <reason>.
