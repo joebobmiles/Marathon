@@ -19,7 +19,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "test": "echo 'Write tests!!!'",
+    "test": "echo 'Write tests!!!' && exit 0",
     "deploy": "npm run build && gh-pages -d public -b master",
     "deploy:ci": "npm run build && gh-pages -d public -b master -r https://$GH_TOKEN@github.com/joebobmiles/Marathon.git"
   },
