@@ -13,16 +13,19 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Install all npm packages before executing build
+    # Install all npm packages before executing build.
     - name: Install packages
       run: npm ci
     
+    # Run site tests.
     - name: Run tests
       run: npm test
 
+    # Give Git a user name so gh-pages doesn't complain
     - name: Set ident name
       run: git config --global user.name "CI/CD"
     
+    # Run gatsby build and deploy the site using gh-pages
     - name: Build and deploy site
       run: npm run deploy:ci
       env:
