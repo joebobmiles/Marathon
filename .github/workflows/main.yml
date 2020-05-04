@@ -21,7 +21,7 @@ jobs:
       run: npm test
 
     - name: Set ident name
-      run: git config user.name "$GITHUB_WORKFLOW"
+      run: echo "$GITHUB_WORKFLOW" && git config user.name "$GITHUB_WORKFLOW"
     
     - name: Build and deploy site
       run: npm run deploy:ci
