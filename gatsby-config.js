@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    name: `Hello Typescript World!`,
+    name: `Hello Marathon World!`,
     tagline: `Gatsby + SASS + Typescript = 💪`
   },  
   plugins: [
