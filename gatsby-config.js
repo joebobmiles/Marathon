@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     name: `Hello Marathon World!`,
-    tagline: `Gatsby + SASS + Typescript = 💪`
+    tagline: `Comming Soon: An Agile project management tool for Github! 🎉`
   },  
   plugins: [
     `gatsby-plugin-sass`,
