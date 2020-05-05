@@ -56,6 +56,8 @@ typings/
 
 # dotenv environment variables file
 .env
+# Protect the .env.development file. REMOVE THIS ONCE ENV VARS ARE SECURE!!!
+.env.development
 
 .cache/
 public
