@@ -6,12 +6,19 @@ import LandingPage from "./index"
 
 describe("<LandingPage/>", () => {
 
-    it("Fails", () => {
-        expect(false).toBe(true)
-    })
+  it("Has a button for signing in.", () => {
+    const { getByRole } = render(
+      <LandingPage data={{
+        site: {
+          siteMetadata: {
+            name: "",
+            tagline: ""
+          }
+        }
+      }}/>
+    )
 
-    it("Passes", () => {
-        expect(true).toBe(true)
-    })
+    expect(getByRole("button")).toHaveTextContent(/sign in/i)
+  })
 
 })

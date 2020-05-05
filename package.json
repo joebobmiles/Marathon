@@ -53,9 +53,12 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "moduleNameMapper": {
+      ".+\\.s[ac]ss$": "identity-obj-proxy"
+    },
     "testPathIgnorePatterns": [
       "node_modules",
-      "\\.cache",
+      ".cache",
       "<rootDir>.*/public"
     ],
     "transformIgnorePatterns": [

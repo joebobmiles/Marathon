@@ -2,6 +2,9 @@ import { graphql } from 'gatsby';
 import * as React from 'react';
 import * as styles from './global.module.scss';
 
+import Button from "../components/Button"
+
+
 interface LandingPageProps {
   data: {
     site: {
@@ -25,14 +28,12 @@ export const indexPageQuery = graphql`
 `;
 
 export default ({ data }: LandingPageProps) => {
-  const {
-    name, tagline
-  } = data.site.siteMetadata
+  const {} = data.site.siteMetadata
 
   return (
     <div className={styles.Container}>
-      <h1>{name}</h1>
-      <p>{tagline}</p>
+      <h1>Welcome to <strong>Marathon</strong>!</h1>
+      <Button>Sign In</Button>
     </div>
   )
 }
