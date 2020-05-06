@@ -24,6 +24,7 @@
     "deploy:ci": "npm run build && gh-pages -d public -b master -r https://$GH_TOKEN@github.com/joebobmiles/Marathon.git"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.8.0",
     "@babel/core": "^7.5.5",
     "gatsby": "^2.13.28",
     "gatsby-plugin-sass": "^2.1.3",
