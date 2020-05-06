@@ -6,9 +6,12 @@ import Button from "../components/Button"
 import * as styles from './global.module.scss';
 
 export default () => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+  const { isLoading, isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
   React.useEffect(() => console.log(user), [user])
+
+  if (isLoading)
+    return null
 
   return (
     <div className={styles.Container}>
