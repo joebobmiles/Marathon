@@ -1,12 +1,11 @@
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import * as React from 'react';
-import * as styles from './global.module.scss';
 
-import Button from "../components/Button"
-
+import Auth0Provider from "../components/Auth0Provider"
+import App from "./App"
 
 interface LandingPageProps {
-  data: {
+  data?: {
     site: {
       siteMetadata: {
         name: string;
@@ -27,13 +26,21 @@ export const indexPageQuery = graphql`
   }
 `;
 
-export default ({ data }: LandingPageProps) => {
-  const {} = data.site.siteMetadata
-
-  return (
-    <div className={styles.Container}>
-      <h1>Welcome to <strong>Marathon</strong>!</h1>
-      <Button>Sign In</Button>
-    </div>
+const onRedirectCallback = (appState: any) => {
+  navigate(
+    appState && appState.targetUrl
+    ? appState.targetUrl
+    : window.location.pathname
   )
 }
+
+export default (props: LandingPageProps) => (
+  <Auth0Provider
+    domain={process.env.AUTH0_DOMAIN || ""}
+    client_id={process.env.AUTH0_CLIENTID || ""}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <App/>
+  </Auth0Provider>
+)
