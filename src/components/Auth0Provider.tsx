@@ -5,13 +5,36 @@
  */
 
 import React, { useContext } from "react"
-import createAuth0Client, { Auth0ClientOptions, Auth0Client } from "@auth0/auth0-spa-js"
+import createAuth0Client, {
+  Auth0ClientOptions,
+  Auth0Client,
+  GetIdTokenClaimsOptions,
+  IdToken,
+  RedirectLoginOptions,
+  GetTokenSilentlyOptions,
+  GetTokenWithPopupOptions,
+  LogoutOptions
+ } from "@auth0/auth0-spa-js"
 
 
 const DEFAULT_REDIRECT_CALLBACK = (appState: any) =>
   window.history.replaceState({}, document.title, window.location.pathname)
 
-export const Auth0Context = React.createContext({})
+type TAuth0Context = {
+  isAuthenticated: boolean
+  user: any
+  isLoading: boolean
+  isPopupOpen: boolean
+  loginWithPopup: (params?: {} | undefined) => Promise<any>
+  handleRedirectCallback: () => Promise<void>
+  getIdTokenClaims: (options?: GetIdTokenClaimsOptions | undefined) => Promise<IdToken>
+  loginWithRedirect: (options?: RedirectLoginOptions | undefined) => Promise<void>
+  getTokenSilently: (options?: GetTokenSilentlyOptions | undefined) => Promise<any>
+  getTokenWithPopup: (options?: GetTokenWithPopupOptions | undefined) => Promise<string>
+  logout: (options?: LogoutOptions | undefined) => void
+}
+
+export const Auth0Context = React.createContext(({} as TAuth0Context))
 export const useAuth0 = () => useContext(Auth0Context)
 
 
@@ -37,8 +60,6 @@ export default ({
 
       const auth0FromHook = await createAuth0Client(initOptions)
       setAuth0Client(auth0FromHook)
-       
-      console.log(auth0FromHook)
 
       if (window.location.search.includes("code=") &&
           window.location.search.includes("state="))
@@ -105,11 +126,11 @@ export default ({
         isPopupOpen,
         loginWithPopup,
         handleRedirectCallback,
-        getIdTokenClaims: (...p: any[]) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (...p: any[]) => auth0Client.loginWithRedirect(...p),
-        getTokenSilently: (...p: any[]) => auth0Client.getTokenSilently(...p),
-        getTokenWithPopup: (...p: any[]) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p: any[]) => auth0Client.logout(...p)
+        getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+        getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+        getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+        logout: (...p) => auth0Client.logout(...p)
       }}
     >
       {children}
