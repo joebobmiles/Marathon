@@ -6,11 +6,13 @@ import Button from "../components/Button"
 import * as styles from './global.module.scss';
 
 export default () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+
+  React.useEffect(() => console.log(user), [user])
 
   return (
     <div className={styles.Container}>
-      <h1>Welcome to <strong>Marathon</strong>!</h1>
+      <h1>Welcome to <strong>Marathon</strong>{user ? `, ${user.nickname}` : ""}!</h1>
       {
       !isAuthenticated 
       ? <Button onClick={() => loginWithRedirect()}>Sign In</Button>
