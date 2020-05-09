@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby";
 
 import { useAuth0 } from "../components/Auth0Provider"
 import Button from "../components/Button"
