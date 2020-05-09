@@ -38,7 +38,7 @@ export default (props: LandingPageProps) => (
   <Auth0Provider
     domain={process.env.AUTH0_DOMAIN || ""}
     client_id={process.env.AUTH0_CLIENTID || ""}
-    redirect_uri={window.location.origin}
+    redirect_uri={process.env.AUTH0_CALLBACK || ""}
     onRedirectCallback={onRedirectCallback}
   >
     <App/>
