@@ -40,8 +40,7 @@ export default () => {
         }
 
         const result = await fetch(
-          // "https://us-central1-marathon-276500.cloudfunctions.net/ghProxy",
-          "http://localhost:8080/ghProxy",
+          process.env.PROXY_URL || "",
           {
             method: "POST",
             body: JSON.stringify(request)
