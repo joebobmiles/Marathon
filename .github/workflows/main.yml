@@ -30,3 +30,7 @@ jobs:
       run: npm run deploy:ci
       env:
         GH_TOKEN: ${{ secrets.GitHubToken }}
+        AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+        AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
+        AUTH0_CALLBACK: ${{ secrets.AUTH0_CALLBACK }}
+        PROXY_URL: ${{ secrets.PROXY_URL }}
