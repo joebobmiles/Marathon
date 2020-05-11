@@ -40,7 +40,7 @@ export default () => {
         }
 
         const result = await fetch(
-          process.env.PROXY_URL || "",
+          process.env.GATSBY_PROXY_URL || "",
           {
             method: "POST",
             body: JSON.stringify(request)

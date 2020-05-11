@@ -36,9 +36,9 @@ const onRedirectCallback = (appState: any) => {
 
 export default (props: LandingPageProps) => (
   <Auth0Provider
-    domain={process.env.AUTH0_DOMAIN || ""}
-    client_id={process.env.AUTH0_CLIENTID || ""}
-    redirect_uri={process.env.AUTH0_CALLBACK || ""}
+    domain={process.env.GATSBY_AUTH0_DOMAIN || ""}
+    client_id={process.env.GATSBY_AUTH0_CLIENTID || ""}
+    redirect_uri={process.env.GATSBY_AUTH0_CALLBACK || ""}
     onRedirectCallback={onRedirectCallback}
   >
     <App/>
